@@ -1,5 +1,6 @@
 package com.dailycodebuffer.cab_book_driver.controller;
 
+import com.dailycodebuffer.cab_book_driver.constant.AppConstant;
 import com.dailycodebuffer.cab_book_driver.service.CabLocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,11 +21,12 @@ public class CabLocationController {
     //Business Logic
 
     @PutMapping
-    public ResponseEntity updateLocation() {
+    public ResponseEntity updateLocation() throws InterruptedException {
 
         int range = 100;
         while(range > 0) {
-            System.out.println(Math.random() + " , " + Math.random());
+            cabLocationService.updateLocation(Math.random() + " , " + Math.random());
+            Thread.sleep(1000);
             range--;
         }
 
